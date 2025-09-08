@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+:root {
+  --primary-color: #487fff;
+  --secondary-color: ;
+  --text-color: #4b5563;
+  --bg-color: #fff;
+  --card-bg: ;
+  --shadow: ;
+  --transition: ;
+}
+
+.dark-mode {
+  --primary-color: #6b8cbe;
+  --secondary-color: #273142;
+  --text-color: #d1d5db;
+  --bg-color: #1b2431;
+  --card-bg: ;
+  --shadow: ;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana,
+    sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  transition: var(--transition);
+}
