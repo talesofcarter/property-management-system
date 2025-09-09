@@ -39,7 +39,7 @@ const Sidebar = ({
       id: "dashboard",
       label: "Dashboard",
       icon: <LuLayoutGrid />,
-      path: "/dashboard",
+      path: "/",
     },
     {
       id: "projects",

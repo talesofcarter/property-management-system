@@ -43,7 +43,7 @@ function App() {
         <div className="flex-1 overflow-y-auto p-6">
           <Routes>
             <Route
-              path="/dashboard"
+              path="/"
               element={
                 <Dashboard isDarkMode={isDarkMode} />
               }
