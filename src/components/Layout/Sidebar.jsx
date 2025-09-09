@@ -3,8 +3,14 @@ import { LuLayoutGrid } from "react-icons/lu";
 import { GoProject } from "react-icons/go";
 import { FaUser } from "react-icons/fa";
 import { IoIosLogOut } from "react-icons/io";
+import { useLocation, useNavigate } from "react-router";
 
-const Sidebar = ({ isDarkMode = false }) => {
+const Sidebar = ({
+  isDarkMode = false,
+  isCollapsed = false,
+}) => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const [activeItem, setActiveItem] = useState("dashboard");
 
   const colors = {
@@ -33,37 +39,53 @@ const Sidebar = ({ isDarkMode = false }) => {
       id: "dashboard",
       label: "Dashboard",
       icon: <LuLayoutGrid />,
+      path: "/dashboard",
     },
     {
       id: "projects",
       label: "My Projects",
       icon: <GoProject />,
+      path: "/projects",
     },
     {
       id: "profile",
       label: "My Profile",
       icon: <FaUser />,
+      path: "/profile",
     },
   ];
 
+  const handleNavigation = (item) => {
+    setActiveItem(item.id);
+    navigate(item.path);
+  };
+
   return (
     <div
-      className="h-screen w-64 flex flex-col border-r transition-colors duration-300"
+      className="h-screen flex flex-col border-r transition-all duration-300"
       style={{
         backgroundColor: currentColors.bg,
         borderColor: currentColors.border,
+        width: isCollapsed ? "5rem" : "16rem",
       }}
     >
       <div
-        className="p-6 border-b"
+        className="p-4 flex items-center gap-3"
         style={{ borderColor: currentColors.border }}
       >
-        <h1
-          className="text-2xl font-bold"
-          style={{ color: currentColors.primary }}
-        >
-          Residaa
-        </h1>
+        <img
+          className="w-8 h-8"
+          src="images/logo.svg"
+          alt="logo"
+        />
+        {!isCollapsed && (
+          <h1
+            className="text-2xl font-bold"
+            style={{ color: currentColors.primary }}
+          >
+            Residaa
+          </h1>
+        )}
       </div>
 
       <nav className="flex-1 p-4">
@@ -71,7 +93,11 @@ const Sidebar = ({ isDarkMode = false }) => {
           {menuItems.map((item) => (
             <li key={item.id}>
               <button
-                className={`w-full flex items-center px-4 py-3 rounded-lg transition-all duration-200 ${
+                className={`w-full flex items-center ${
+                  isCollapsed
+                    ? "justify-center px-3"
+                    : "px-4"
+                } py-3 rounded-lg transition-all duration-200 cursor-pointer ${
                   activeItem === item.id
                     ? "font-medium"
                     : ""
@@ -98,12 +124,12 @@ const Sidebar = ({ isDarkMode = false }) => {
                       "transparent";
                   }
                 }}
-                onClick={() => setActiveItem(item.id)}
+                onClick={() => handleNavigation(item)}
               >
-                <span className="text-lg mr-3">
-                  {item.icon}
-                </span>
-                <span>{item.label}</span>
+                <span className="text-lg">{item.icon}</span>
+                {!isCollapsed && (
+                  <span className="ml-3">{item.label}</span>
+                )}
               </button>
             </li>
           ))}
@@ -115,7 +141,9 @@ const Sidebar = ({ isDarkMode = false }) => {
         style={{ borderColor: currentColors.border }}
       >
         <button
-          className="w-full flex items-center px-4 py-3 rounded-lg transition-colors duration-200"
+          className={`w-full flex items-center ${
+            isCollapsed ? "justify-center px-3" : "px-4"
+          } py-3 rounded-lg transition-colors duration-200`}
           style={{ color: currentColors.text }}
           onMouseEnter={(e) => {
             e.target.style.backgroundColor =
@@ -125,10 +153,12 @@ const Sidebar = ({ isDarkMode = false }) => {
             e.target.style.backgroundColor = "transparent";
           }}
         >
-          <span className="text-lg mr-3">
+          <span className="text-lg">
             <IoIosLogOut />
           </span>
-          <span>Logout</span>
+          {!isCollapsed && (
+            <span className="ml-3">Logout</span>
+          )}
         </button>
       </div>
     </div>

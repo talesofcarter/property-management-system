@@ -21,8 +21,15 @@ function App() {
         backgroundColor: isDarkMode ? "#1b2431" : "#fff",
       }}
     >
-      <div className="flex-shrink-0">
-        <Sidebar isDarkMode={isDarkMode} />
+      <div
+        className={`${
+          sidebarOpen ? "w-64" : "w-20"
+        } flex-shrink-0 transition-all duration-300`}
+      >
+        <Sidebar
+          isDarkMode={isDarkMode}
+          isCollapsed={!sidebarOpen}
+        />
       </div>
 
       <div className="flex-1 flex flex-col overflow-hidden">
@@ -30,6 +37,7 @@ function App() {
           isDarkMode={isDarkMode}
           setIsDarkMode={setIsDarkMode}
           toggleSidebar={toggleSidebar}
+          sidebarOpen={sidebarOpen}
         />
 
         <div className="flex-1 overflow-y-auto p-6">

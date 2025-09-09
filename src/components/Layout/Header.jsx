@@ -7,6 +7,7 @@ const Header = ({
   isDarkMode,
   setIsDarkMode,
   toggleSidebar,
+  sidebarOpen,
 }) => {
   const [isSearchFocused, setIsSearchFocused] =
     useState(false);
@@ -155,6 +156,7 @@ const Header = ({
             >
               <CiUser
                 style={{ color: currentColors.primary }}
+                className="text-xl"
               />
             </div>
             <div className="hidden md:block">

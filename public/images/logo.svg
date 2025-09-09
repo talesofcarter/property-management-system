@@ -1,0 +1,27 @@
+<!-- resida-icon-pillars-fixed.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-labelledby="title desc">
+  <title id="title">Resida circular badge logo</title>
+  <desc id="desc">A circular badge containing a house roof supported by four vertical pillars in brand blue #487fff.</desc>
+
+  <defs>
+    <style>
+      .brand { fill: #487fff; }
+      .stroke { stroke: #487fff; stroke-width: 6; fill: none; }
+    </style>
+  </defs>
+
+  <!-- Circular frame -->
+  <circle cx="60" cy="60" r="54" class="stroke"/>
+
+  <!-- Roof -->
+  <polygon points="30,55 90,55 60,30" class="brand"/>
+
+  <!-- Four perfectly vertical pillars under roof -->
+  <rect x="34" y="55" width="8" height="30" class="brand"/>
+  <rect x="49" y="55" width="8" height="30" class="brand"/>
+  <rect x="64" y="55" width="8" height="30" class="brand"/>
+  <rect x="79" y="55" width="8" height="30" class="brand"/>
+
+  <!-- Base -->
+  <rect x="30" y="85" width="60" height="6" class="brand"/>
+</svg>
